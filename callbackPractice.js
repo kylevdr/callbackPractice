@@ -25,7 +25,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 
   //Code Here for first
-  
+var first = function(array, callback) {
+  callback(array[0]);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -37,7 +39,9 @@ first(names, function(firstName){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+var last = function(array, callback) {
+  callback(array[array.length -1 ]);
+};
 
   //Code Here for last
 
@@ -58,6 +62,10 @@ last(names, function(lastName){
 
   //Code Here for multiply
 
+var multiply = function(num1, num2, callback) {
+  callback(num1 * num2);
+};
+
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 })
@@ -70,7 +78,15 @@ multiply(4, 3, function(answer){
 
 
 
-
+var contains = function(array, name, callback) {
+  var result = false;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === name) {
+      result = true;
+    }
+  }
+  callback(result);
+};
 
   //Code Here for contains
 
@@ -89,6 +105,21 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+var uniq = function(array, callback) {
+  var uniqArr = [];
+  for (var i = 0; i < array.length; i++) {
+    var isDuplicate = false;
+    for (var j = 0; j < uniqArr.length; j++) {
+      if (uniqArr[j] === array[i]) {
+        isDuplicate = true;
+      }
+    }
+    if (!isDuplicate) {
+      uniqArr.push(array[i]);
+    }
+  }
+  callback(uniqArr);
+};
 
 
     //Code Here for uniq
@@ -103,7 +134,11 @@ uniq(names, function(uniqArr){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
+var each = function(array, callback) {
+  for (var i = 0; i < array.length; i++) {
+    callback(array[i], i);
+  }
+};
 
 
     //Code Here for each
@@ -119,7 +154,15 @@ each(names, function(item, indice){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+var getUserById = function(users, id, callback) {
+  var myUser;
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      myUser = users[i];
+    }
+  }
+  callback(myUser);
+};
 
 
  //code here for getUserById
